@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:login_splash_test/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:login_splash_test/login.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
         fit: StackFit.expand,
         children: <Widget>[
           const Image(
-            image: AssetImage('assets/cyan-girl0.jpg'),
+            image: AssetImage('assets/bgImages/cyan-girl0.jpg'),
             fit: BoxFit.fill,
             color: Color.fromARGB(210, 0, 0, 0),
             colorBlendMode: BlendMode.darken,
