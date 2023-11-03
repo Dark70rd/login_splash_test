@@ -1,18 +1,18 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:login_splash_test/signup.dart';
+import 'package:login_splash_test/login.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:login_splash_test/home.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class SignupPage extends StatefulWidget {
+  const SignupPage({Key? key}) : super(key: key);
 
   @override
-  State createState() => LoginPageState();
+  State createState() => SignupPageState();
 }
 
-class LoginPageState extends State<LoginPage>
+class SignupPageState extends State<SignupPage>
     with SingleTickerProviderStateMixin {
   TextEditingController usernamec = TextEditingController();
   TextEditingController passwordc = TextEditingController();
@@ -24,24 +24,6 @@ class LoginPageState extends State<LoginPage>
     prefs.setBool("isLoggedIn", true);
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => HomePage()));
-  }
-
-  late AnimationController _iconAnimationController;
-  late Animation<double> _iconAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-    _iconAnimationController = AnimationController(
-      vsync: this,
-      duration: Duration(milliseconds: 400),
-    );
-    _iconAnimation = CurvedAnimation(
-      parent: _iconAnimationController,
-      curve: Curves.bounceOut,
-    );
-    _iconAnimation.addListener(() => this.setState(() {}));
-    _iconAnimationController.forward();
   }
 
   @override
@@ -60,23 +42,54 @@ class LoginPageState extends State<LoginPage>
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              ImageIcon(
-                AssetImage('assets/icons/logo-nobg.png'),
-                color: Colors.white,
-                size: _iconAnimation.value * 120,
-              ),
               Container(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Form(
                   autovalidateMode: AutovalidateMode.always,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(right: 150),
+                        child: Text(
+                          "Join E-corp",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5.0,
+                      ),
                       TextFormField(
                         style: TextStyle(color: Colors.white),
-                        controller: usernamec,
                         decoration: InputDecoration(
-                          labelText: "Phone, email, or username",
+                          labelText: "Full name",
+                          labelStyle: TextStyle(color: Colors.grey),
+                          floatingLabelStyle: TextStyle(color: Colors.white),
+                          fillColor: Colors.white,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color.fromARGB(255, 3, 107, 107),
+                            ),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(
+                        height: 5.0,
+                      ),
+                      TextFormField(
+                        style: TextStyle(color: Colors.white),
+                        decoration: InputDecoration(
+                          labelText: "Email, or phone",
                           labelStyle: TextStyle(color: Colors.grey),
                           floatingLabelStyle: TextStyle(color: Colors.white),
                           fillColor: Colors.white,
@@ -94,7 +107,31 @@ class LoginPageState extends State<LoginPage>
                         keyboardType: TextInputType.emailAddress,
                       ),
                       SizedBox(
-                        height: 10.0,
+                        height: 5.0,
+                      ),
+                      TextFormField(
+                        style: TextStyle(color: Colors.white),
+                        controller: usernamec,
+                        decoration: InputDecoration(
+                          labelText: "Username",
+                          labelStyle: TextStyle(color: Colors.grey),
+                          floatingLabelStyle: TextStyle(color: Colors.white),
+                          fillColor: Colors.white,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color.fromARGB(255, 3, 107, 107),
+                            ),
+                          ),
+                        ),
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(
+                        height: 5.0,
                       ),
                       TextFormField(
                         style: TextStyle(color: Colors.white),
@@ -114,14 +151,37 @@ class LoginPageState extends State<LoginPage>
                             ),
                           ),
                         ),
+                        obscureText: false,
+                        keyboardType: TextInputType.text,
+                      ),
+                      SizedBox(
+                        height: 5.0,
+                      ),
+                      TextFormField(
+                        style: TextStyle(color: Colors.white),
+                        decoration: InputDecoration(
+                          labelText: "Enter password again!",
+                          labelStyle: TextStyle(color: Colors.grey),
+                          floatingLabelStyle: TextStyle(color: Colors.white),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.white,
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color.fromARGB(255, 3, 107, 107),
+                            ),
+                          ),
+                        ),
                         obscureText: true,
                         keyboardType: TextInputType.text,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(top: 32.0),
+                        padding: const EdgeInsets.only(top: 20.0),
                       ),
                       MaterialButton(
-                        height: 50.0,
+                        height: 45.0,
                         minWidth: 150.0,
                         color: Color.fromARGB(255, 3, 107, 107),
                         splashColor: Colors.teal,
@@ -135,28 +195,13 @@ class LoginPageState extends State<LoginPage>
                         padding: const EdgeInsets.only(top: 10.0),
                         child: RichText(
                           text: TextSpan(
-                              style: TextStyle(color: Colors.grey),
-                              children: <TextSpan>[
-                                TextSpan(
-                                    text: "Forgot password?",
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () {
-                                        print("Forgot password tapped!");
-                                      }),
-                              ]),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 25.0),
-                        child: RichText(
-                          text: TextSpan(
                             style: TextStyle(
                               color: Colors.grey,
                             ),
                             children: <TextSpan>[
-                              TextSpan(text: "Don't have an account? "),
+                              TextSpan(text: "Already have an account? "),
                               TextSpan(
-                                text: "Sign up",
+                                text: "Log In",
                                 style: TextStyle(
                                     color: Color.fromARGB(255, 3, 107, 107)),
                                 recognizer: TapGestureRecognizer()
@@ -164,8 +209,7 @@ class LoginPageState extends State<LoginPage>
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) => SignupPage(),
-                                      ),
+                                          builder: (context) => LoginPage()),
                                     );
                                   },
                               ),
