@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -40,26 +41,10 @@ class LoginPageState extends State<LoginPage>
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              RotationTransition(
-                turns: AlwaysStoppedAnimation(-25 / 360),
-                child: Text(
-                  "E",
-                  style: TextStyle(
-                    fontSize: 100.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.start,
-                ),
-              ),
-              Text(
-                "  E CORP",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20,
-                  letterSpacing: 5,
-                ),
-                textAlign: TextAlign.end,
+              ImageIcon(
+                AssetImage('assets/icons/logo-nobg.png'),
+                color: Colors.white,
+                size: 120,
               ),
               Container(
                 padding: const EdgeInsets.all(20.0),
@@ -72,29 +57,41 @@ class LoginPageState extends State<LoginPage>
                         style: TextStyle(color: Colors.white),
                         controller: usernamec,
                         decoration: InputDecoration(
-                          labelText: "Enter Email",
-                          labelStyle: TextStyle(color: Colors.white),
+                          labelText: "Phone, email, or username",
+                          labelStyle: TextStyle(color: Colors.grey),
+                          floatingLabelStyle: TextStyle(color: Colors.white),
                           fillColor: Colors.white,
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Colors.white,
                             ),
                           ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color.fromARGB(255, 3, 107, 107),
+                            ),
+                          ),
                         ),
                         keyboardType: TextInputType.emailAddress,
                       ),
                       SizedBox(
-                        height: 7.0,
+                        height: 10.0,
                       ),
                       TextFormField(
                         style: TextStyle(color: Colors.white),
                         controller: passwordc,
                         decoration: InputDecoration(
                           labelText: "Enter Password",
-                          labelStyle: TextStyle(color: Colors.white),
+                          labelStyle: TextStyle(color: Colors.grey),
+                          floatingLabelStyle: TextStyle(color: Colors.white),
                           enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                               color: Colors.white,
+                            ),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color.fromARGB(255, 3, 107, 107),
                             ),
                           ),
                         ),
@@ -114,6 +111,43 @@ class LoginPageState extends State<LoginPage>
                         onPressed: () {
                           _performLogin();
                         },
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10.0),
+                        child: RichText(
+                          text: TextSpan(
+                              style: TextStyle(color: Colors.grey),
+                              children: <TextSpan>[
+                                TextSpan(
+                                    text: "Forgot password?",
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        print("Forgot password tapped!");
+                                      }),
+                              ]),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 25.0),
+                        child: RichText(
+                          text: TextSpan(
+                            style: TextStyle(
+                              color: Colors.grey,
+                            ),
+                            children: <TextSpan>[
+                              TextSpan(text: "Don't have an account? "),
+                              TextSpan(
+                                text: "Sign up",
+                                style: TextStyle(
+                                    color: Color.fromARGB(255, 3, 107, 107)),
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    print("Sign up tapped!");
+                                  },
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ],
                   ),
