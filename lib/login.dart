@@ -61,8 +61,8 @@ class LoginPageState extends State<LoginPage>
             Image(
               image: AssetImage('assets/bgImages/donna1.jpg'),
               fit: BoxFit.cover,
-              color: Color.fromARGB(194, 0, 0, 0),
-              colorBlendMode: BlendMode.multiply,
+              color: Colors.black87,
+              colorBlendMode: BlendMode.darken,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -73,7 +73,7 @@ class LoginPageState extends State<LoginPage>
                   size: _iconAnimation.value * 120,
                 ),
                 Container(
-                  padding: EdgeInsets.all((scrWidth * 0.04)),
+                  padding: EdgeInsets.all((scrWidth * 0.03)),
                   child: Form(
                     autovalidateMode: AutovalidateMode.always,
                     child: Column(
@@ -101,7 +101,7 @@ class LoginPageState extends State<LoginPage>
                           keyboardType: TextInputType.emailAddress,
                         ),
                         SizedBox(
-                          height: 10.0,
+                          height: 8.0,
                         ),
                         TextFormField(
                           style: TextStyle(color: Colors.white),

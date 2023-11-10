@@ -36,6 +36,7 @@ class SignupPageState extends State<SignupPage>
       height: scrHeight,
       width: scrWidth,
       child: Scaffold(
+        resizeToAvoidBottomInset: true,
         backgroundColor: Colors.black,
         body: Stack(
           fit: StackFit.expand,
@@ -43,15 +44,15 @@ class SignupPageState extends State<SignupPage>
             Image(
               image: AssetImage('assets/bgImages/donna1.jpg'),
               fit: BoxFit.cover,
-              color: Color.fromARGB(194, 0, 0, 0),
-              colorBlendMode: BlendMode.multiply,
+              color: Colors.black87,
+              colorBlendMode: BlendMode.darken,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.all((scrWidth * 0.04)),
+                  padding: EdgeInsets.all((scrWidth * 0.03)),
                   child: Form(
                     autovalidateMode: AutovalidateMode.always,
                     child: Column(
@@ -60,18 +61,18 @@ class SignupPageState extends State<SignupPage>
                       mainAxisSize: MainAxisSize.min,
                       children: <Widget>[
                         Padding(
-                          padding: EdgeInsets.only(right: (scrWidth * 0.57)),
+                          padding: EdgeInsets.only(right: (scrWidth * 0.59)),
                           child: Text(
                             "Signup",
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 40,
+                                fontSize: 35,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
                         SizedBox(
-                          height: (scrHeight * 0.01),
+                          height: 9.4,
                         ),
                         TextFormField(
                           style: TextStyle(color: Colors.white),
